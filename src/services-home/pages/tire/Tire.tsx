@@ -2,17 +2,26 @@ import { NavLink } from "react-router-dom";
 import { TitlePage } from "../../components/TitlePage";
 import { useState } from "react";
 import Modal from "react-modal";
-import { CreateTire } from './CreateTire';
+import { CreateTire } from "./CreateTire";
+import { CreateBrandTire } from "./brand/CreateBrandTire";
 
 export const Tire = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenBrand, setModalIsOpenBrand] = useState(false);
 
   const openModal = () => {
     setModalIsOpen(true);
   };
-
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  const openModalBrand = () => {
+    setModalIsOpenBrand(true);
+  };
+
+  const closeModalBrand = () => {
+    setModalIsOpenBrand(false);
   };
 
   return (
@@ -24,7 +33,13 @@ export const Tire = () => {
           className="bg-green-600 text-white px-3 py-1 rounded mb-5"
           onClick={() => openModal()}
         >
-          Crear
+          Crear Llanta
+        </button>
+        <button
+          className="bg-green-600 text-white px-3 py-1 ml-5 rounded mb-5"
+          onClick={() => openModalBrand()}
+        >
+          Crear Marca de Llanta
         </button>
         <NavLink
           to="/home"
@@ -106,7 +121,15 @@ export const Tire = () => {
         onRequestClose={closeModal}
         className="flex justify-center mt-28"
       >
-        <CreateTire closeModal={closeModal}/>
+        <CreateTire closeModal={closeModal} />
+      </Modal>
+
+      <Modal
+        isOpen={modalIsOpenBrand}
+        onRequestClose={closeModalBrand}
+        className="flex justify-center mt-28"
+      >
+        <CreateBrandTire />
       </Modal>
     </div>
   );
