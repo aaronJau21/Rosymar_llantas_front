@@ -121,7 +121,7 @@ export const Tire = () => {
         onRequestClose={closeModal}
         className="flex justify-center mt-28"
       >
-        <CreateTire closeModal={closeModal} />
+        <CreateTire />
       </Modal>
 
       <Modal

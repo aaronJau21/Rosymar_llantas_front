@@ -1,4 +1,4 @@
-export const CreateTire = ({ closeModal }: { closeModal: () => void }) => {
+export const CreateTire = () => {
   return (
     <div className="flex justify-center bg-slate-500 h-full w-96 pb-10 rounded-xl">
       <form className="mt-8 w-80 text-center">
