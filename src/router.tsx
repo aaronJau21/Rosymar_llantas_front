@@ -5,6 +5,7 @@ import { ServicesLayout } from "./services-home/layout/ServicesLayout";
 import { Trucks } from "./services-home/pages/Truck/Trucks";
 import { Users } from "./services-home/pages/users/Users";
 import { Tire } from "./services-home/pages/tire/Tire";
+import ProtectedRoute from "./global/store/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "home",
-    element: <Home />,
+    element: <ProtectedRoute element={<Home />} />,
   },
   {
     path: "",
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "services",
-    element: <ServicesLayout />,
+    element: <ProtectedRoute element={<ServicesLayout />} />,
     children: [
       {
         path: "users",
