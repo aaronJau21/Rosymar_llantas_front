@@ -3,7 +3,7 @@ import { InputsLogin } from "../types/login.type";
 import { useMutation } from "@tanstack/react-query";
 import { LoginService } from "../services/login.service";
 import { LoginResponse } from "../interfaces";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useLoginStore } from "../store/login.store";
 
@@ -80,6 +80,7 @@ export const Login = () => {
           </form>
         </div>
       </div>
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };

@@ -6,6 +6,7 @@ import { Trucks } from "./services-home/pages/Truck/Trucks";
 import { Users } from "./services-home/pages/users/Users";
 import { Tire } from "./services-home/pages/tire/Tire";
 import ProtectedRoute from "./global/store/ProtectedRoute";
+import { CreateTruck } from './services-home/pages/Truck/CreateTruck';
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "trucks",
         element: <Trucks />,
+      },
+      {
+        path: "trucks/create",
+        element: <CreateTruck />,
       },
       {
         path: "tire",
