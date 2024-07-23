@@ -103,7 +103,7 @@ export const Users = () => {
           onRequestClose={closeModal}
           className="flex justify-center mt-28"
         >
-          <CreateUser closeModal={closeModal} />
+          <CreateUser  />
         </Modal>
       </div>
     );
