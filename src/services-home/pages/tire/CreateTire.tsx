@@ -71,10 +71,10 @@ export const CreateTire = () => {
 
   return (
     <div className="flex justify-center bg-zinc-300 h-screen ">
-      <form className="mt-8 w-96 text-center" onSubmit={handleSubmit(onSubmit)}>
+      <form className="mt-8 sm:w-96 text-center" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-xl text-center  font-bold mb-3">Crear Llanta</h2>
 
-        <div className="grid grid-cols-2 gap-x-5">
+        <div className="grid sm:grid-cols-2 gap-x-5">
           <div>
             <label htmlFor="posicion" className=" block">
               Posición:
