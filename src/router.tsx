@@ -6,7 +6,9 @@ import { Trucks } from "./services-home/pages/Truck/Trucks";
 import { Users } from "./services-home/pages/users/Users";
 import { Tire } from "./services-home/pages/tire/Tire";
 import ProtectedRoute from "./global/store/ProtectedRoute";
-import { CreateTruck } from './services-home/pages/Truck/CreateTruck';
+import { CreateTruck } from "./services-home/pages/Truck/CreateTruck";
+import { CreateTire } from "./services-home/pages/tire/CreateTire";
+import { CreateBrandTire } from "./services-home/pages/tire/brand/CreateBrandTire";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
       {
         path: "tire",
         element: <Tire />,
+      },
+      {
+        path: "tire/create",
+        element: <CreateTire />,
+      },
+      {
+        path: "tire/create/brand",
+        element: <CreateBrandTire />,
       },
     ],
   },

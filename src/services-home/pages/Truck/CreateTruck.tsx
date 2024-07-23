@@ -40,7 +40,7 @@ export const CreateTruck = () => {
         <div className="bg-zinc-400 p-5 rounded-md">
           <div>
             <label htmlFor="marca" className=" block">
-              Marca:
+              Placa:
             </label>
             <select
               id="marca"
