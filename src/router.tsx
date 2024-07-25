@@ -11,6 +11,7 @@ import { CreateTire } from "./services-home/pages/tire/CreateTire";
 import { CreateBrandTire } from "./services-home/pages/tire/brand/CreateBrandTire";
 import { CreateUser } from "./services-home/pages/users/CreateUser";
 import { EditUser } from "./services-home/pages/users/EditUser";
+import { UpdateTruck } from "./services-home/pages/Truck/UpdateTruck";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "trucks/create",
         element: <CreateTruck />,
+      },
+      {
+        path: "trucks/:id",
+        element: <UpdateTruck />,
       },
       {
         path: "tire",

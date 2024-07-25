@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { TitlePage } from "../../components/TitlePage";
 import { useLoginStore } from "../../../auth/store/login.store";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { TruckService } from "../../services/truck.service";
+import toast from "react-hot-toast";
 
 export const Trucks = () => {
   const token = useLoginStore((set) => set.token);
@@ -12,6 +13,20 @@ export const Trucks = () => {
     queryFn: () => TruckService.getAllTrucks(token),
     enabled: !!token,
   });
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: (id: number) => TruckService.deleteTruck(id, token),
+    onError: () => {
+      toast.error("Error al eliminar");
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["trucks"] });
+      toast.success("Usuario actualizado con éxito");
+    },
+  });
+
+  const onDelete = (id: number) => mutation.mutate(id);
 
   if (isLoading) return "Cargando data...";
 
@@ -84,20 +99,22 @@ export const Trucks = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-r">
                       <div className="flex gap-x-5">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="size-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-                          />
-                        </svg>
+                        <NavLink to={`/services/trucks/${truck.id}`}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+                            />
+                          </svg>
+                        </NavLink>
 
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +122,8 @@ export const Trucks = () => {
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"
-                          className="size-6"
+                          className="size-6 cursor-pointer"
+                          onClick={() => onDelete(truck.id)}
                         >
                           <path
                             strokeLinecap="round"
