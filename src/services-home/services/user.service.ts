@@ -1,5 +1,7 @@
 import { http } from '../../config/http.config';
 import { UserRequest, UserResponse } from '../interfaces';
+import { UserByIDResponse } from '../interfaces/userGetByIdResponse';
+import { UserUpdateRequest } from '../pages/users/EditUser';
 
 export class UserService {
 
@@ -23,6 +25,39 @@ export class UserService {
     };
 
     const { data } = await http.post<UserResponse[]>( '/users', request, { headers } );
+
+    return data;
+
+  }
+
+  public static async getUsertById( id: number, token: string ): Promise<UserByIDResponse> {
+    const headers = {
+      Authorization: `Bearer ${ token }`
+    };
+
+    const { data } = await http.get<UserByIDResponse>( `/users/${ id }`, { headers } );
+
+    return data;
+
+  }
+
+  public static async editUser( userUpdateRequest: UserUpdateRequest, id: string, token: string ) {
+    const headers = {
+      Authorization: `Bearer ${ token }`
+    };
+
+    const { data } = await http.put( `/users/${ id }`, userUpdateRequest, { headers } );
+
+    return data;
+  }
+
+  public static async deleteUser( id: number, token: string ) {
+
+    const headers = {
+      Authorization: `Bearer ${ token }`
+    };
+
+    const { data } = await http.delete( `/users/${ id }`, { headers } );
 
     return data;
 

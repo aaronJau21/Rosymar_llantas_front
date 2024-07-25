@@ -3,7 +3,8 @@ import { UserRequest } from "../../interfaces";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { UserService } from "../../services/user.service";
 import { useLoginStore } from "../../../auth/store/login.store";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const CreateUser = () => {
   const initalValues: UserRequest = {
@@ -16,6 +17,7 @@ export const CreateUser = () => {
   const token = useLoginStore((set) => set.token);
 
   const { register, handleSubmit } = useForm({ defaultValues: initalValues });
+  const navigate = useNavigate();
 
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -25,25 +27,21 @@ export const CreateUser = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
+      navigate("/services/users");
     },
   });
 
   const onSubmit = (data: UserRequest) => mutation.mutate(data);
 
   return (
-    <div className="flex justify-center bg-zinc-200 h-screen">
-      <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex justify-center bg-zinc-300 h-screen">
+      <form className="mt-8 s:w-96" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-xl text-center  font-bold mb-3">Crear Usuario</h2>
         <div>
           <label htmlFor="name" className=" block">
             Nombre completo:
           </label>
-          <input
-            type="text"
-            id="name"
-            {...register("name")}
-            className="bg-slate-600 text-white"
-          />
+          <input type="text" id="name" {...register("name")} />
         </div>
 
         <div className="my-3">
@@ -78,6 +76,7 @@ export const CreateUser = () => {
           </button>
         </div>
       </form>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

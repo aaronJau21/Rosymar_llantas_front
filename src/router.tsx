@@ -9,6 +9,8 @@ import ProtectedRoute from "./global/store/ProtectedRoute";
 import { CreateTruck } from "./services-home/pages/Truck/CreateTruck";
 import { CreateTire } from "./services-home/pages/tire/CreateTire";
 import { CreateBrandTire } from "./services-home/pages/tire/brand/CreateBrandTire";
+import { CreateUser } from "./services-home/pages/users/CreateUser";
+import { EditUser } from "./services-home/pages/users/EditUser";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "users/create",
+        element: <CreateUser />,
+      },
+      {
+        path: "users/:id",
+        element: <EditUser />,
       },
       {
         path: "trucks",
