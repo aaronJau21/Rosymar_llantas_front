@@ -60,4 +60,19 @@ export class TruckService {
     return data;
   }
 
+  public static async exportTrucks( token: string ) {
+    const headers = {
+      Authorization: `Bearer ${ token }`
+    };
+    const { data } = await http.get( '/trucks/export/excel', { headers, responseType: 'blob' } );
+    const url = window.URL.createObjectURL( new Blob( [ data ] ) );
+    const link = document.createElement( 'a' );
+    link.href = url;
+    link.setAttribute( 'download', 'trucks.xlsx' ); // or whatever file name you want
+    document.body.appendChild( link );
+    link.click();
+    link.parentNode?.removeChild( link );
+    return data;
+  }
+
 }
