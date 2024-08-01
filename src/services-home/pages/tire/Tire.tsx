@@ -23,8 +23,8 @@ export const Tire = () => {
         <TitlePage title="Llantas" />
 
         <div className="mt-9">
-          <div className="flex justify-between">
-            <div>
+          <div className="lg:flex lg:justify-between">
+            <div className="hidden lg:flex">
               <NavLink
                 to="/services/tire/create"
                 className="bg-green-600 text-white px-3 py-1 rounded mb-5"
@@ -44,9 +44,27 @@ export const Tire = () => {
                 Volver
               </NavLink>
             </div>
+            <NavLink
+              to="/services/tire/create"
+              className="bg-green-600 text-white px-3 py-1 rounded mb-5 lg:hidden"
+            >
+              Crear Llanta
+            </NavLink>
+            <NavLink
+              to="/services/tire/create/brand"
+              className="bg-green-600 text-white px-3 py-1 ml-5 rounded mb-5 lg:hidden"
+            >
+              Crear Marca de Llanta
+            </NavLink>
+            <NavLink
+              to="/home"
+              className="bg-red-600 text-white px-3 py-1 rounded ml-5 mb-5 lg:hidden"
+            >
+              Volver
+            </NavLink>
             <button
               onClick={() => exportExcel()}
-              className="bg-green-400 text-white px-3 py-1 flex gap-x-2 rounded ml-5 mb-5"
+              className="bg-green-400 text-white px-3 py-1 flex gap-x-2 rounded lg:ml-5 mb-5 mt-3 lg:mt-0"
             >
               Export
               <svg
