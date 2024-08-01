@@ -43,7 +43,7 @@ export const EditUser = () => {
   useEffect(() => {
     if (data) {
       reset({
-        name: data.user.name,
+        name: data.user?.name,
         dni: data.user.dni,
         role: data.user.role,
       });
