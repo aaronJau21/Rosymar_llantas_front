@@ -44,21 +44,23 @@ export const Tire = () => {
                 Volver
               </NavLink>
             </div>
-            <NavLink
-              to="/services/tire/create"
-              className="bg-green-600 text-white px-3 py-1 rounded mb-5 lg:hidden"
-            >
-              Crear Llanta
-            </NavLink>
-            <NavLink
-              to="/services/tire/create/brand"
-              className="bg-green-600 text-white px-3 py-1 ml-5 rounded mb-5 lg:hidden"
-            >
-              Crear Marca de Llanta
-            </NavLink>
+            <div className=" mb-3">
+              <NavLink
+                to="/services/tire/create"
+                className="bg-green-600 text-white px-3 py-1 rounded mb-5 lg:hidden"
+              >
+                Crear Llanta
+              </NavLink>
+              <NavLink
+                to="/services/tire/create/brand"
+                className="bg-green-600 text-white px-3 py-1 ml-5 rounded mb-5 lg:hidden"
+              >
+                Crear Marca de Llanta
+              </NavLink>
+            </div>
             <NavLink
               to="/home"
-              className="bg-red-600 text-white px-3 py-1 rounded ml-5 mb-5 lg:hidden"
+              className="bg-red-600 text-white px-3 py-1 rounded lg:ml-5 mb-5 lg:hidden"
             >
               Volver
             </NavLink>
