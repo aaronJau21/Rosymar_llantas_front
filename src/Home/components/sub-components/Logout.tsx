@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { useLoginStore } from "../../../auth/store/login.store";
+import { LogoutService } from "../../services/logout.service";
 
 export const Logout = () => {
+  const token = useLoginStore((state) => state.token);
   const setToken = useLoginStore((set) => set.setToken);
   const setUser = useLoginStore((set) => set.setUser);
 
   const naviagete = useNavigate();
 
-  const logout = () => {
+  const logout = async () => {
+    await LogoutService.logoutSesion(token);
     setToken("");
     setUser({ dni: "", name: "", role: "" });
     naviagete("/login");
