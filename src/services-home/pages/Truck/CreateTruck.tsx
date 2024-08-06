@@ -9,7 +9,9 @@ import { BrandTruck } from "./data/marca";
 
 export const CreateTruck = () => {
   const initalValues: TruckRequest = {
-    cantidad_llantas: 0,
+    dueno: "",
+    tolerancia_delantera: 0,
+    tolerancia_trasera: 0,
     marca: "",
     placa: "",
     observation: "",
@@ -69,19 +71,43 @@ export const CreateTruck = () => {
           </div>
 
           <div className="my-3">
-            <label htmlFor="cantidad_llantas" className=" block">
-              Cantidad de llantas:
+            <label htmlFor="dueno" className="block">
+              Dueño:
             </label>
             <input
-              type="number"
-              id="cantidad_llantas"
-              {...register("cantidad_llantas")}
-              className="w-full rounded"
+              type="text"
+              id="dueno"
+              className="w-full"
+              {...register("dueno")}
             />
           </div>
 
           <div className="my-3">
-            <label htmlFor="cantidad_llantas" className=" block">
+            <label htmlFor="tolerancia_delantera" className="block">
+              Tolerancia Delantera:
+            </label>
+            <input
+              type="number"
+              id="tolerancia_delantera"
+              className="w-full"
+              {...register("tolerancia_delantera")}
+            />
+          </div>
+
+          <div className="my-3">
+            <label htmlFor="tolerancia_trasera" className="block">
+              Tolerancia trasera:
+            </label>
+            <input
+              type="number"
+              id="tolerancia_trasera"
+              className="w-full"
+              {...register("tolerancia_trasera")}
+            />
+          </div>
+
+          <div className="my-3">
+            <label htmlFor="observation" className=" block">
               Observaciones:
             </label>
             <textarea

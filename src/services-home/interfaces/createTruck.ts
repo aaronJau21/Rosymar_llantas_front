@@ -1,6 +1,8 @@
 export interface TruckRequest {
   marca: string;
   placa: string;
-  cantidad_llantas: number;
+  dueno: string;
+  tolerancia_delantera: number;
+  tolerancia_trasera: number;
   observation: string;
 }

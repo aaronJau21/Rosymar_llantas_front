@@ -12,5 +12,16 @@ export const BrandTruck = [
   'INTERNATIONAL',
   'ISUZU LOCAL',
   'ISUZU NACIONAL',
-  'LIM'
+  'LIM',
+  'MAX METAL',
+  'MELGA',
+  'MERCEDES BENZ',
+  'NISSAN',
+  'PEUGEOT',
+  'RECONCISA',
+  'SAN MARTIN',
+  'SCANIA',
+  'TOYOTA',
+  'UD',
+  'VOLTRAILER'
 ];
